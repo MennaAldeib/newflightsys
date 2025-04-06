@@ -66,106 +66,109 @@ class _AddTravellerBottomSheetState extends State<AddTravellerBottomSheet> {
         top: 16,
       ),
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Gender Selection
-            Center(
-              child: ToggleButtons(
-                isSelected: [isFemale, !isFemale],
-                onPressed: (index) {
-                  setState(() {
-                    isFemale = index == 0;
-                  });
-                },
-                borderRadius: BorderRadius.circular(8),
-                selectedColor: Colors.white,
-                fillColor: const Color(0xFF0D75B4),
-                color: Colors.black,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text("Female"),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text("Male"),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 10),
-
-            // Input Fields
-            _buildTextField("First Name", firstNameController),
-            const SizedBox(height: 10),
-            _buildTextField("Last Name", lastNameController),
-            const SizedBox(height: 10),
-
-            // Nationality
-            _buildCountryPicker("Nationality", selectedNationality, (value) {
-              setState(() {
-                selectedNationality = value;
-              });
-            }),
-            const SizedBox(height: 10),
-
-            // Date of Birth
-            _buildDatePicker("Date of Birth", selectedDob, (value) {
-              setState(() {
-                selectedDob = value;
-              });
-            }),
-            const SizedBox(height: 10),
-
-            // Passport Number
-            _buildTextField("Passport Number", passportNumberController),
-            const SizedBox(height: 10),
-
-            // Passport Country
-            _buildCountryPicker("Passport Country", selectedPassportCountry, (value) {
-              setState(() {
-                selectedPassportCountry = value;
-              });
-            }),
-            const SizedBox(height: 10),
-
-            // Passport Expiry Date
-            _buildDatePicker("Passport Expiry", selectedPassportExpiry, (value) {
-              setState(() {
-                selectedPassportExpiry = value;
-              });
-            }),
-            const SizedBox(height: 20),
-
-            // Submit Button
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Pass collected data back to the calling screen
-                  Navigator.pop(context, {
-                    "firstName": firstNameController.text,
-                    "lastName": lastNameController.text,
-                    "gender": isFemale ? "Female" : "Male",
-                    "nationality": selectedNationality,
-                    "dob": selectedDob,
-                    "passportNumber": passportNumberController.text,
-                    "passportCountry": selectedPassportCountry,
-                    "passportExpiry": selectedPassportExpiry,
-                  });
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF0D75B4),
-                  padding: const EdgeInsets.symmetric(vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Gender Selection
+              Center(
+                child: ToggleButtons(
+                  isSelected: [isFemale, !isFemale],
+                  onPressed: (index) {
+                    setState(() {
+                      isFemale = index == 0;
+                    });
+                  },
+                  borderRadius: BorderRadius.circular(8),
+                  selectedColor: Colors.white,
+                  fillColor: const Color(0xFF0D75B4),
+                  color: Colors.black,
+                  children: const [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Text("Female"),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Text("Male"),
+                    ),
+                  ],
                 ),
-                child: const Text("OK", style: TextStyle(color: Colors.white, fontSize: 16)),
               ),
-            ),
-          ],
+              const SizedBox(height: 10),
+
+              // Input Fields
+              _buildTextField("First Name", firstNameController),
+              const SizedBox(height: 10),
+              _buildTextField("Last Name", lastNameController),
+              const SizedBox(height: 10),
+
+              // Nationality
+              _buildCountryPicker("Nationality", selectedNationality, (value) {
+                setState(() {
+                  selectedNationality = value;
+                });
+              }),
+              const SizedBox(height: 10),
+
+              // Date of Birth
+              _buildDatePicker("Date of Birth", selectedDob, (value) {
+                setState(() {
+                  selectedDob = value;
+                });
+              }),
+              const SizedBox(height: 10),
+
+              // Passport Number
+              _buildTextField("Passport Number", passportNumberController),
+              const SizedBox(height: 10),
+
+              // Passport Country
+              _buildCountryPicker("Passport Country", selectedPassportCountry, (value) {
+                setState(() {
+                  selectedPassportCountry = value;
+                });
+              }),
+              const SizedBox(height: 10),
+
+              // Passport Expiry Date
+              _buildDatePicker("Passport Expiry", selectedPassportExpiry, (value) {
+                setState(() {
+                  selectedPassportExpiry = value;
+                });
+              }),
+              const SizedBox(height: 20),
+
+              // Submit Button
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Pass collected data back to the calling screen
+                    Navigator.pop(context, {
+                      "firstName": firstNameController.text,
+                      "lastName": lastNameController.text,
+                      "gender": isFemale ? "Female" : "Male",
+                      "nationality": selectedNationality,
+                      "dob": selectedDob,
+                      "passportNumber": passportNumberController.text,
+                      "passportCountry": selectedPassportCountry,
+                      "passportExpiry": selectedPassportExpiry,
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF0D75B4),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text("OK", style: TextStyle(color: Colors.white, fontSize: 16)),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

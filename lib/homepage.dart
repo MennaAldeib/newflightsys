@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:homepage/reservationflight.dart';
 
 class FlightBookingScreen extends StatefulWidget {
+
+ // final TripInfo
   @override
   State<FlightBookingScreen> createState() => _FlightBookingScreenState();
 }
@@ -155,6 +157,7 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8),
       child: Card(
+        color: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 3,
         child: Padding(

@@ -14,13 +14,19 @@ class _BookingScreenState extends State<BookingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+
         backgroundColor: const Color(0xFF0D75B4),
-        title: const Text("Tour and Travel", style: TextStyle(color: Colors.white)),
-        centerTitle: true,
+        leading: Icon(Icons.arrow_back ,color: Colors.white,),
+        title:  Row(
+          children: [
+            Text("Tour and Travel", style: TextStyle(color: Colors.white)),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding:  EdgeInsets.all(16.0),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
