@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:homepage/reservationflight.dart';
 
 class FlightBookingScreen extends StatefulWidget {
+  final String logo ;
+  final String airlineTitle;
+
+  const FlightBookingScreen({super.key, required this.logo, required this.airlineTitle});
 
  // final TripInfo
   @override
@@ -9,10 +13,15 @@ class FlightBookingScreen extends StatefulWidget {
 }
 
 class _FlightBookingScreenState extends State<FlightBookingScreen> {
-  final List<Map<String, String>> flights = [
+  late List<Map<String, String>> flights;
+
+  @override
+
+  void initState() {
+   flights = [
     {
-      "airline": "Etihad Airways",
-      "logo": "https://logolook.net/wp-content/uploads/2024/02/Etihad-Airways-Logo.png",
+      "airline":widget.airlineTitle,
+      "logo": widget.logo,
       "departureTime": "13:15",
       "departureCity": "Cairo",
       "arrivalTime": "10:25",
@@ -20,8 +29,8 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
       "price": "6000EP"
     },
     {
-      "airline": "EgyptAir",
-      "logo": "https://static.cdnlogo.com/logos/e/89/egyptair-thumb.png",
+      "airline": widget.airlineTitle,
+      "logo": widget.logo,
       "departureTime": "15:30",
       "departureCity": "Cairo",
       "arrivalTime": "12:45",
@@ -29,8 +38,8 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
       "price": "7500EP"
     },
     {
-      "airline": "Qatar Airways",
-      "logo": "https://storage.googleapis.com/moq-bucket-moq-skwid/Qatar_Airways_Emblem_1b89b4d9fb/Qatar_Airways_Emblem_1b89b4d9fb.png",
+      "airline": widget.airlineTitle,
+      "logo": widget.logo,
       "departureTime": "17:45",
       "departureCity": "Cairo",
       "arrivalTime": "14:55",
@@ -39,21 +48,29 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
     },
   ];
 
-  @override
+  super.initState();
+  }
+
+@override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Color(0xFF0D75B4),
-          title: Row(
+
+          backgroundColor: const Color(0xFF0D75B4),
+          leading: InkWell(
+            onTap: () => Navigator.
+              pop(context) ,
+              child: Icon(Icons.arrow_back ,color: Colors.white,)),
+          title:  Row(
             children: [
-              SizedBox(width: 10),
-              Text("Tour and Travel", style: TextStyle(fontSize: 18 , color: Colors.white) ,),
+              Text("Tour and Travel", style: TextStyle(color: Colors.white)),
             ],
           ),
         ),
+
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           child: Column(
@@ -113,6 +130,7 @@ class _FlightBookingScreenState extends State<FlightBookingScreen> {
       child: Padding(
         padding: EdgeInsets.all(5),
         child: TabBar(
+          dividerColor: Colors.transparent,
           labelColor: Colors.white,
           unselectedLabelColor: Colors.black,
           indicator: BoxDecoration(

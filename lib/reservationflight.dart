@@ -18,7 +18,10 @@ class _BookingScreenState extends State<BookingScreen> {
       appBar: AppBar(
 
         backgroundColor: const Color(0xFF0D75B4),
-        leading: Icon(Icons.arrow_back ,color: Colors.white,),
+        leading: InkWell(
+            onTap: () => Navigator.
+            pop(context) ,
+            child: Icon(Icons.arrow_back ,color: Colors.white,)),
         title:  Row(
           children: [
             Text("Tour and Travel", style: TextStyle(color: Colors.white)),
